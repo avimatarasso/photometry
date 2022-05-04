@@ -1,10 +1,8 @@
 % general photometry processing script for preprocessed TDT files
 % preprocessed .mat files should contain "Dts", "data1" 
-% a 
+%  
 % please use tdtExtract_clean to extract code
-% it 
-% genPhotomNew is the n
-%
+% 
 % please email akmat@uw.edu with any questions
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,31 +230,6 @@ for subjectIdx = 1:length(workdir)
     
 end
 
-%% plot first stim session (not necessary)
-
-
-%% save variables in folder
-timevec=linspace(-timeBefore,timeAfter,length(allData));
-if isfolder('varsAndFigs')
-    cd('varsAndFigs')
-    if exist(savename,'var')
-        save(savename, 'allData','timingIdxs','timevec','path_to_data','-append')
-    else
-        save(savename, 'allData','timingIdxs','timevec','path_to_data')
-    end
-    cd('..')
-else
-    mkdir('varsAndFigs')
-    cd('varsAndFigs')
-    if exist(savename,'var')
-        save(savename, 'allData','timingIdxs','timevec','path_to_data','-append')
-    else
-        save(savename, 'allData','timingIdxs','timevec','path_to_data','path_to_data')
-    end
-    cd('..')
-    % close all
-end
-%}
 
 %% plots
 
@@ -278,6 +251,30 @@ end
 
 % create plots, might want to CUSTOMIZE
 createPlots(dataForPlots)
+
+
+%% save variables in folder
+timevec=linspace(-timeBefore,timeAfter,length(allData));
+if isfolder('varsAndFigs')
+    cd('varsAndFigs')
+    if exist(savename,'var')
+        save(savename, 'allData','timingIdxs','timevec','path_to_data','dataForPlots','-append')
+    else
+        save(savename, 'allData','timingIdxs','timevec','path_to_data','dataForPlots')
+    end
+    cd('..')
+else
+    mkdir('varsAndFigs')
+    cd('varsAndFigs')
+    if exist(savename,'var')
+        save(savename, 'allData','timingIdxs','timevec','path_to_data','dataForPlots','-append')
+    else
+        save(savename, 'allData','timingIdxs','timevec','path_to_data','path_to_data','dataForPlots')
+    end
+    cd('..')
+    % close all
+end
+%}
 
 %% Save All Figures
 answer = questdlg('All graphs are saved. Would you like to save the individual figures too?', ...

@@ -1,9 +1,9 @@
-% Code written by Christian Pedersen
+% Code written by Christian Pedersen, adapted by Avi Matarasso
 % Michael Bruchas Lab - UW
 
 % Extracts photometry data from TDT Data Tank and outputs time series as
 % .mat file
-
+% Assumes tankname (such as Avi_stim-210913-102052) is in path_to_data 
 % REQUIRES tdt2mat.m file to be in same folder (filepath)
 
 %% Reset MatLab workspace - clears all variables and the command window
